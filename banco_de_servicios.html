@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco de Servicios - Tres Sesenta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-page: #f0f0f0;
+            --white: #ffffff;
+            --pink-brand: #e6007e;
+            --whatsapp: #25D366;
+            --gmail: #EA4335;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0 100px 0;
+        }
+
+        /* BOTÓN REGRESAR CIRCULAR - SOLO MÓVIL */
+        .btn-back-circle {
+            display: none; /* Oculto en PC */
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--pink-brand);
+            color: white;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back-circle:hover {
+            transform: scale(1.1);
+            background-color: #c5006b;
+        }
+
+        /* CONTENEDOR DE IMÁGENES */
+        .container {
+            width: 95%;
+            max-width: 650px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px; 
+        }
+
+        .service-page {
+            width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+
+        /* BOTONES FLOTANTES EN LA VENTANA */
+        .window-contact-group {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 9999;
+        }
+
+        .btn-float {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Efecto Hover para botones de contacto */
+        .btn-float:hover {
+            transform: scale(1.15) translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .btn-wpp { background-color: var(--whatsapp); color: white; font-size: 30px; }
+        .btn-gmail { background-color: var(--white); }
+
+        /* --- ADAPTACIÓN CELULAR --- */
+        @media (max-width: 600px) {
+            .btn-back-circle {
+                display: flex; /* Visible en móvil */
+            }
+            
+            body { padding-top: 10px; }
+
+            .container { width: 100%; gap: 4px; }
+
+            .window-contact-group {
+                bottom: 20px;
+                right: 20px;
+                gap: 10px;
+            }
+
+            .btn-float {
+                width: 55px;
+                height: 55px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="btn-back-circle" title="Regresar">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <div class="container">
+        <img src="assets/images/1.png" alt="Hoja 1" class="service-page">
+        <img src="assets/images/2.png" alt="Hoja 2" class="service-page">
+        <img src="assets/images/3.png" alt="Hoja 3" class="service-page">
+        <img src="assets/images/4.png" alt="Hoja 4" class="service-page">
+        <img src="assets/images/5.png" alt="Hoja 5" class="service-page">
+        <img src="assets/images/6.png" alt="Hoja 6" class="service-page">
+    </div>
+
+    <div class="window-contact-group">
+        <a href="#" id="linkWpp" class="btn-float btn-wpp" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <a href="#" id="linkGmail" class="btn-float btn-gmail" title="Gmail">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" width="30" alt="Gmail">
+        </a>
+    </div>
+
+    <script>
+        // Mismos datos que en la tarjeta principal
+        const miTelefono = "528332932881"; 
+        const miCorreo = "angeleduardolarahernandez@gmail.com";
+        const asunto = "Consulta desde Banco de Servicios";
+
+        // Script para activar los enlaces
+        document.getElementById('linkWpp').href = `https://wa.me/${miTelefono}`;
+        document.getElementById('linkGmail').href = `https://mail.google.com/mail/?view=cm&fs=1&to=${miCorreo}&su=${encodeURIComponent(asunto)}`;
+    </script>
+
+</body>
+</html>
