@@ -151,14 +151,21 @@
     </div>
 
     <script>
-        // Mismos datos que en la tarjeta principal
         const miTelefono = "528331188000"; 
         const miCorreo = "abisailopezaguilar24@gmail.com";
         const asunto = "Consulta desde Banco de Servicios";
 
-        // Script para activar los enlaces
+        // Enlace de WhatsApp directo
         document.getElementById('linkWpp').href = `https://wa.me/${miTelefono}`;
-        document.getElementById('linkGmail').href = `https://mail.google.com/mail/?view=cm&fs=1&to=${miCorreo}&su=${encodeURIComponent(asunto)}`;
+
+        // CORRECCIÓN GMAIL: Detecta si es móvil o PC para usar la mejor opción
+        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // En celulares abre la App nativa de correo (Gmail, Mail de Apple, etc.)
+            document.getElementById('linkGmail').href = `mailto:${miCorreo}?subject=${encodeURIComponent(asunto)}`;
+        } else {
+            // En computadoras abre la pestaña web cómoda de Gmail
+            document.getElementById('linkGmail').href = `https://mail.google.com/mail/?view=cm&fs=1&to=${miCorreo}&su=${encodeURIComponent(asunto)}`;
+        }
     </script>
 
 </body>
