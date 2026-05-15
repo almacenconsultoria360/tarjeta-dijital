@@ -54,12 +54,39 @@
             display: block;
         }
 
-        /* AJUSTE FINAL: CENTRADO TOTAL DEL QR */
+        /* TEXTO "DA CLICK AQUÍ" (MÁS GRANDE, BLANCO, SUBRAYADO Y CON ANIMACIÓN) */
+        .qr-text-link {
+            position: absolute;
+            top: 22%;                
+            right: 4.4%;
+            width: 28.3%;
+            text-align: center;
+            font-family: 'Aileron', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 800;        
+            font-size: 18px;         
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: underline; /* Subrayado activado por defecto */
+            color: var(--white);     
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+            z-index: 10;
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Animación fluida al pasar el cursor */
+        .qr-text-link:hover {
+            transform: translateY(-3px) scale(1.03); 
+            opacity: 0.95;
+            text-shadow: 0 5px 10px rgba(0, 0, 0, 0.5), 0 0 8px rgba(255, 255, 255, 0.6); 
+        }
+
+        /* AJUSTE FIJO DEL QR */
         .qr-overlay {
             position: absolute;
-            top: 28.9%;    /* Bajado un poco más para centrar verticalmente */
-            right: 3.0%;   /* Movido a la derecha para centrar horizontalmente */
-            width: 28.3%;  /* Tamaño exacto para el cuadro blanco */
+            top: 28.6%;    
+            right: 4.4%;   
+            width: 28.3%;  
             aspect-ratio: 1 / 1;
             display: flex;
             justify-content: center;
@@ -124,6 +151,10 @@
                 width: 55px;
                 height: 55px;
             }
+            .qr-text-link {
+                font-size: 11px;    
+                top: 23%;
+            }
         }
     </style>
 </head>
@@ -132,6 +163,8 @@
     <div class="card">
         <div class="main-image-container">
             <img src="tar.png" class="bg-img" alt="Fondo Tarjeta">
+
+            <a href="banco_de_servicios.html" target="_blank" class="qr-text-link">DA CLICK AQUÍ</a>
 
             <div class="qr-overlay">
                 <a href="banco_de_servicios.html" target="_blank">
@@ -156,13 +189,13 @@
         const miCorreo = "abisailopezaguilar24@gmail.com";
         const asunto = "Contacto desde Tarjeta Digital";
 
+        // Enlace de WhatsApp directo
         document.getElementById('linkWpp').href = `https://wa.me/${miTelefono}`;
-        // CORRECCIÓN GMAIL: Detecta si es móvil o PC para usar la mejor opción
+
+        // Lógica de Gmail para móvil y PC
         if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            // En celulares abre la App nativa de correo (Gmail, Mail de Apple, etc.)
             document.getElementById('linkGmail').href = `mailto:${miCorreo}?subject=${encodeURIComponent(asunto)}`;
         } else {
-            // En computadoras abre la pestaña web cómoda de Gmail
             document.getElementById('linkGmail').href = `https://mail.google.com/mail/?view=cm&fs=1&to=${miCorreo}&su=${encodeURIComponent(asunto)}`;
         }
     </script>
