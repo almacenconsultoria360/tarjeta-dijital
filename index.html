@@ -54,10 +54,10 @@
             display: block;
         }
 
-        /* TEXTO "DA CLICK AQUÍ" - VISTA DE COMPUTADORA */
+        /* TEXTO "DA CLICK AQUÍ" (MÁS GRANDE, BLANCO, SUBRAYADO Y CON ANIMACIÓN) */
         .qr-text-link {
             position: absolute;
-            top: 20%;                /* Ajustado para dar más aire en vertical */
+            top: 22%;                
             right: 4.4%;
             width: 28.3%;
             text-align: center;
@@ -66,15 +66,15 @@
             font-size: 18px;         
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            text-decoration: underline; 
+            text-decoration: underline; /* Subrayado activado por defecto */
             color: var(--white);     
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); 
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
             z-index: 10;
             display: inline-block;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* Animación fluida al pasar el cursor (PC) */
+        /* Animación fluida al pasar el cursor */
         .qr-text-link:hover {
             transform: translateY(-3px) scale(1.03); 
             opacity: 0.95;
@@ -84,8 +84,8 @@
         /* AJUSTE FIJO DEL QR */
         .qr-overlay {
             position: absolute;
-            top: 28.6%;    
-            right: 4.4%;   
+            top: 28.9%;    
+            right: 3.0%;   
             width: 28.3%;  
             aspect-ratio: 1 / 1;
             display: flex;
@@ -141,8 +141,7 @@
             transform: scale(1.1) translateY(-5px);
         }
 
-        /* --- ADAPTACIÓN DE RESPONSIVIDAD PARA CELULARES --- */
-        @media (max-width: 600px) {
+         @media (max-width: 600px) {
             .window-contact-group {
                 bottom: 20px;
                 right: 20px;
